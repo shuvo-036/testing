@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check internet</title>
+</head>
+<body>
+    <style>
+        body {
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        .status {
+            font-size: 24px;
+            color: #333;
+        }
+        .online {
+            color: green;
+        }
+        .offline {
+            color: red;
+        }
+    </style>
+    <div id="status" class="status">Checking... Connection...</div><br>
+    <p>Created by <b>Golam Moniruzzaman</b>	&#128516;</p>
+    <script>
+        function updateStatus(isOnline) {
+            const statusDiv = document.getElementById('status');
+            if (isOnline) {
+                statusDiv.textContent = "You are online!";
+                statusDiv.classList.add('online');
+                statusDiv.classList.remove('offline');
+            } else {
+                statusDiv.textContent = "You are offline!";
+                statusDiv.classList.add('offline');
+                statusDiv.classList.remove('online');
+            }
+        }
+
+        window.addEventListener('load', () => {
+            updateStatus(navigator.onLine);
+        });
+
+        window.addEventListener('online', () => {
+            updateStatus(true);
+        });
+
+        window.addEventListener('offline', () => {
+            updateStatus(false);
+        });
+    </script>
+</body>
+</html>

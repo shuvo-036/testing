@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camera Access</title>
+</head>
+<body>
+    <style>
+        body {
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        
+        }
+        video , canvas {
+            border: 2px solid #000;
+            border-radius: 10px;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        h2 {
+            color: #6f12bb;
+        }
+       
+        
+    </style>
+   <h2>&#127910; Take a video using webcam</h2>
+
+   <video src="" id="video" width="320" height="240" autoplay></video>
+<br>
+   <button onclick="capturephoto()"> Capture</button><br><br>
+<canvas id="canvas" width="320" height="240"></canvas><br>
+<p>Created by <b>Golam Moniruzzaman</b>	&#128516;</p>
+<script>
+    const video = document.getElementById('video');
+    const canvas = document.getElementById('canvas');
+    const context = canvas.getContext('2d');
+
+   
+    navigator.mediaDevices.getUserMedia({ video: true })
+        .then(stream => {
+            video.srcObject = stream;
+        })
+        .catch(err => {
+            console.error("Error accessing webcam: ", err);
+        });
+
+    function capturephoto() {
+        context.drawImage(video, 0, 0, canvas.width, canvas.height);
+     
+    }
+
+</script>
+
+</body>
+</html>
