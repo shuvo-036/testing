@@ -1,1 +1,1 @@
-Basic projects are given here 
+This is the Basic projects 
